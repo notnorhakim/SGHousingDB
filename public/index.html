@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Search for Housing Information</h1>
+
+        <!-- Filters Form with Dropdown Menus -->
+        <div class="filters">
+            <h3>Filters</h3>
+
+            <!-- Filters are divided into two columns for better space utilization -->
+            <div class="filter-columns">
+                <!-- Left Column -->
+                <div class="filter-column">
+                    <div class="filter-group">
+                        <label for="town">Town:</label>
+                        <select id="town" onchange="updateStreetNames()">
+                            <option value="Any">Any</option>
+                            <!-- Town options will be inserted here dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="street_name">Street Name:</label>
+                        <select id="street_name" onchange="updateBlocks();">
+                            <option value="Any">Any</option>
+                            <!-- Street Name options will be inserted here dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="block">Block:</label>
+                        <select id="block" onchange="updateFlatTypes();">   
+                            <option value="Any">Any</option>
+                            <!-- Block options will be inserted here dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="flat_type">Flat Type:</label>
+                        <select id="flat_type">
+                            <option value="Any">Any</option>
+                            <!-- Flat type options will be populated here dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="filter-column">
+                    <div class="filter-group">
+                        <label for="start_year">Start Year:</label>
+                        <select id="start_year">
+                            <option value="">Select start year</option>
+                            <!-- Years will be inserted here dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="start_month">Start Month:</label>
+                        <select id="start_month">
+                            <option value="">Select start month</option>
+                            <!-- Months will be inserted here dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="end_year">End Year:</label>
+                        <select id="end_year">
+                            <option value="">Select end year</option>
+                            <!-- Years will be inserted here dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="end_month">End Month:</label>
+                        <select id="end_month">
+                            <option value="">Select end month</option>
+                            <!-- Months will be inserted here dynamically -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Stats Buttons -->
+            <div class="actions">
+                <button class="search-btn" onclick="searchHousing()">Search</button>
+                <button class="stats-btn" onclick="calculateStatistics()">Calculate Statistics</button>
+            </div>
+
+        </div>
+
+        <!-- Results Section - Table for Results -->
+        <div id="results" class="results">
+            <div class="results-header">
+                <div class="results-stats">
+                    <p id="results-count">Displaying 0 results</p>
+
+                    <!-- Display Statistics Result beside the results count -->
+                    <div id="statistics" class="statistics">
+                        <p id="mean-price">Mean Price: $0</p>
+                        <p id="highest-price">Highest Price: $0</p>
+                        <p id="lowest-price">Lowest Price: $0</p>
+                    </div>
+                </div>
+            </div>
+
+            <table id="results_table">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Block</th>
+                        <th onclick="sortTable(1)">Storey Range</th>
+                        <th onclick="sortTable(2)">Flat Type</th>
+                        <th onclick="sortTable(3)">Model</th>
+                        <th onclick="sortTable(4)">Town</th>
+                        <th onclick="sortTable(5)">Street Name</th>
+                        <th onclick="sortTable(6)">Remaining Lease</th>
+                        <th onclick="sortTable(7)">Resale Price</th>
+                        <th>Date</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Results will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
